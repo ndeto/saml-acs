@@ -25,12 +25,12 @@ class AcsController < ApplicationController
 
   private
 
-  def saml_settings
+  def get_saml_settings
     settings = OneLogin::RubySaml::Settings.new
 
-    settings.assertion_consumer_service_url = "http://#{request.host}/saml/consume"
-    settings.sp_entity_id                   = "http://#{request.host}/saml/metadata"
-    settings.idp_entity_id                  = "https://app.onelogin.com/saml/metadata/#{OneLoginAppId}"
+    settings.assertion_consumer_service_url = "https://dev-1488456.okta.com/app/slack/exkfyaubp87EmKS885d5/sso/saml"
+    settings.sp_entity_id                   = "https://dev-1488456.okta.com/app/exkfyaubp87EmKS885d5/sso/saml/metadata"
+    settings.idp_entity_id                  = "http://www.okta.com/exkfyaubp87EmKS885d5"
     settings.idp_sso_target_url             = "https://app.onelogin.com/trust/saml2/http-post/sso/#{OneLoginAppId}"
     settings.idp_slo_target_url             = "https://app.onelogin.com/trust/saml2/http-redirect/slo/#{OneLoginAppId}"
     settings.idp_cert_fingerprint           = OneLoginAppCertFingerPrint
