@@ -26,6 +26,8 @@ class SamlController < ApplicationController
     response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], :settings => saml_settings)
     puts response
 
+    byebug
+
     Rails.logger.info("Response: #{response.name_id}")
     # reset_session
     session[:user_id] = response.name_id
