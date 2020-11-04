@@ -24,6 +24,8 @@ class SamlController < ApplicationController
   #
   def acs
     response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], :settings => saml_settings)
+
+    byebug
     puts response
 
     Rails.logger.info("Response: #{response}")
