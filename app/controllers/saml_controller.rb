@@ -29,7 +29,7 @@ class SamlController < ApplicationController
     Rails.logger.info("Response: #{response}")
     # reset_session
     session[:user_id] = response.nameid
-    redirect_to start_url
+    redirect_to root_path
   end
 
   #
@@ -37,7 +37,7 @@ class SamlController < ApplicationController
   #
   def logout
     reset_session
-    redirect_to root_url
+    redirect_to root_path
   end
 
   private
