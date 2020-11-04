@@ -30,7 +30,7 @@ class SamlController < ApplicationController
 
     Rails.logger.info("Response: #{response}")
     # reset_session
-    session[:user_id] = response.nameid
+    session[:user_id] = response.name_id
     redirect_to root_path
   end
 
@@ -48,7 +48,7 @@ class SamlController < ApplicationController
     @settings ||= begin
                     # if ENV['IDP_METADATA_URL'] && ENV['IDP_METADATA_URL'].present?
                     #   OneLogin::RubySaml::IdpMetadataParser.new.parse_remote('https://dev-1488456.okta.com/app/exkfyaubp87EmKS885d5/sso/saml/metadata')
-                      OneLogin::RubySaml::IdpMetadataParser.new.parse_remote('https://dev-1488456.okta.com/app/exkdnrv49II4QFLLg5d5/sso/saml/metadata')
+                    OneLogin::RubySaml::IdpMetadataParser.new.parse_remote('https://dev-1488456.okta.com/app/exkdnrv49II4QFLLg5d5/sso/saml/metadata')
                     # else
                     #   raise StandardError, "The environment variable IDP_METADATA_URL is not set."
                     # end
