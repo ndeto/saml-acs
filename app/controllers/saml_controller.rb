@@ -24,6 +24,9 @@ class SamlController < ApplicationController
   #
   def acs
     response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], :settings => saml_settings)
+    puts response
+
+    Rails.logger.info("Response: #{response}")
     # reset_session
     session[:user_id] = response.nameid
     redirect_to start_url
