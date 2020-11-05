@@ -24,9 +24,6 @@ class SamlController < ApplicationController
   #
   def acs
     response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], :settings => saml_settings)
-    puts response
-
-    byebug
 
     Rails.logger.info("Response: #{response.name_id}")
     # reset_session
@@ -48,6 +45,7 @@ class SamlController < ApplicationController
     @settings ||= begin
                     # if ENV['IDP_METADATA_URL'] && ENV['IDP_METADATA_URL'].present?
                     #   OneLogin::RubySaml::IdpMetadataParser.new.parse_remote('https://dev-1488456.okta.com/app/exkfyaubp87EmKS885d5/sso/saml/metadata')
+                    # OneLogin::RubySaml::IdpMetadataParser.new.parse_remote('https://dev-1488456.okta.com/app/exkdnrv49II4QFLLg5d5/sso/saml/metadata')
                     OneLogin::RubySaml::IdpMetadataParser.new.parse_remote('https://dev-1488456.okta.com/app/exkdnrv49II4QFLLg5d5/sso/saml/metadata')
                     # else
                     #   raise StandardError, "The environment variable IDP_METADATA_URL is not set."
